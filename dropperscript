@@ -1,0 +1,14 @@
+local Dropper
+
+function StartDropping()
+	local PlayerName = script.Parent.Parent.Parent.Parent.Claimed.Value
+	local Player = game.Players[PlayerName]
+
+	while task.wait(2) do
+		Dropper.Spawn(Player, script.Parent.Position + Vector3.new(0, -1, 0), script.Parent.Parent.DropAmount.Value, "Cookie")
+	end
+end
+
+repeat task.wait(1) until script.Parent:IsDescendantOf(workspace)
+Dropper = require(game.ServerScriptService:WaitForChild("Dropper"))
+StartDropping()
