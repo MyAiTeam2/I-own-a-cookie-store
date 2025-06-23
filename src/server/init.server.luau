@@ -66,18 +66,12 @@ end
 
 -- Handle start sprint requests
 startSprintRemote.OnServerEvent:Connect(function(player)
-	local success = applySprintBonus(player)
-	if success then
-		print(string.format("%s started sprinting (speed bonus: +%d)", player.Name, SprintModule.BASE_SPRINT_BONUS))
-	end
+	applySprintBonus(player)
 end)
 
 -- Handle stop sprint requests
 stopSprintRemote.OnServerEvent:Connect(function(player)
-	local success = removeSprintBonus(player)
-	if success then
-		print(string.format("%s stopped sprinting", player.Name))
-	end
+	removeSprintBonus(player)
 end)
 
 -- Clean up sprint bonuses when player leaves
@@ -93,4 +87,3 @@ Players.PlayerAdded:Connect(function(player)
 	end)
 end)
 
-print("Sprint System Server loaded! Using existing SprintRemotes with timeout protection.")
